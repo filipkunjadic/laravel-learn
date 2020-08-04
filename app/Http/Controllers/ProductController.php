@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductController extends Controller
 {
     public function index(){
-      return view('products.index');
+      $products = Product::all();
+      return view('products.index',['products' => $products]);
+      // or we can use compact comapct('products')
+      // that will assign variable with that name to same named key
     }
 }
